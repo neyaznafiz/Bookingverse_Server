@@ -1,13 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
 import mongoose from "mongoose";
-import authRouter from "./routes/auth.js";
-import usersRouter from "./routes/users.js";
-import hotelsRouter from "./routes/hotels.js";
-import roomsRouter from "./routes/rooms.js";
+import authRouter from "./routes/auth.route.js";
+import usersRouter from "./routes/users.route.js";
+import hotelsRouter from "./routes/hotels.route.js";
+import roomsRouter from "./routes/rooms.route.js";
 
 const app = express();
-dotenv.config();
 
 const connect = async () => {
   try {
@@ -27,10 +27,11 @@ mongoose.connection.on("connected", () => {
 });
 
 // middleware
+app.use(express.json());
 app.use("/api/auth", authRouter);
-app.use("/api/users", authRouter);
-app.use("/api/hotels", authRouter);
-app.use("/api/rooms", authRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/hotels", hotelsRouter);
+app.use("/api/rooms", roomsRouter);
 
 app.get("/", (req, res) => {
   res.send("BookingVerse Server is running");
