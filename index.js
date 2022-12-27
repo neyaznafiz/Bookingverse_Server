@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.route.js";
 import usersRouter from "./routes/users.route.js";
 import hotelsRouter from "./routes/hotels.route.js";
@@ -27,7 +28,7 @@ mongoose.connection.on("connected", () => {
 });
 
 // middleware
-
+app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
