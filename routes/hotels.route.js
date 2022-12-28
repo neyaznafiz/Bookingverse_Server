@@ -6,12 +6,11 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-// create
+
 router.route("/")
   .get(getHotels)
   .post(verifyAdmin, createHotel);
 
-// update
 router.route("/:id")
   .get(getHotelById)
   .put(verifyAdmin, updateHotel)
