@@ -12,11 +12,11 @@ const router = express.Router();
 
 router.get("/", getRooms);
 router.post("/:hotelId", verifyAdmin, createRoom);
+router.delete( "/:id/:hotelId",verifyAdmin, deleteRoom);
 
 router
   .route("/:id")
   .get(getRoomById)
   .put(verifyAdmin, updateRoom)
-  .delete(verifyAdmin, deleteRoom);
 
 export default router;
