@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.route.js";
 import usersRouter from "./routes/users.route.js";
@@ -28,6 +29,7 @@ mongoose.connection.on("connected", () => {
 });
 
 // middleware
+app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 

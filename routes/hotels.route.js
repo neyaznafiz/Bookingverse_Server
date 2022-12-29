@@ -7,6 +7,7 @@ import {
   getHotelById,
   getHotels,
   getHotelsCountByCity,
+  getHotelsCountByType,
   updateHotel,
 } from "../controllers/hotel.controller.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
@@ -14,7 +15,7 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 const router = express.Router();
 
 router.get("/count-by-city", getHotelsCountByCity)
-router.get("/count-by-type")
+router.get("/count-by-type", getHotelsCountByType)
 
 router
   .route("/:id")
